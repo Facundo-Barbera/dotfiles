@@ -1,0 +1,57 @@
+% !TEX program = pdflatex
+% !TEX options = -aux-directory=out -output-directory=out -synctex=1 -interaction=nonstopmode -file-line-error "%DOC"
+\documentclass[12pt,letterpaper]{article}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+
+% Page geometry
+\geometry{margin=1in}
+
+% Header/Footer
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Course Name}
+\chead{Homework \#}
+\rhead{Your Name}
+\cfoot{\thepage}
+
+% Problem environment
+\newcounter{problem}
+\newenvironment{problem}[1][]
+  {\refstepcounter{problem}\par\medskip\noindent\textbf{Problem~\theproblem. #1}\rmfamily}
+  {\medskip}
+
+\begin{document}
+
+\begin{center}
+    {\Large \textbf{Homework \#}}\\
+    \vspace{0.2cm}
+    {\large Course Name}\\
+    \vspace{0.2cm}
+    Your Name\\
+    \today
+\end{center}
+
+\begin{problem}
+Problem statement here.
+\end{problem}
+
+\textbf{Solution:}
+
+Your solution here.
+
+\begin{problem}
+Another problem.
+\end{problem}
+
+\textbf{Solution:}
+
+Your solution here.
+
+\end{document}

@@ -1,0 +1,146 @@
+#!/bin/bash
+
+# Simple SketchyBar Configuration
+PLUGIN_DIR="$CONFIG_DIR/plugins"
+
+# Basic bar setup
+sketchybar --bar \
+    height=30 \
+    blur_radius=0 \
+    position=top \
+    y_offset=8 \
+    padding_left=10 \
+    padding_right=10 \
+    color=0x00000000
+
+# Default item settings - Catppuccin Frappé
+sketchybar --default \
+    icon.font="JetBrainsMono Nerd Font:Bold:15.0" \
+    icon.color=0xffc6d0f5 \
+    label.font="JetBrainsMono Nerd Font:Regular:15.0" \
+    label.color=0xffc6d0f5 \
+    background.color=0xff414559 \
+    background.corner_radius=15 \
+    background.height=30 \
+    padding_left=8 \
+    padding_right=8 \
+    label.padding_left=10 \
+    label.padding_right=10
+
+# Left side - Workspaces in one bubble
+# Add workspace I first
+sketchybar --add item space.I left \
+    --set space.I \
+        label="I" \
+        background.drawing=off \
+        click_script="aerospace workspace I" \
+        script="$PLUGIN_DIR/aerospace.sh"
+
+# Add hidden workspace M (multimedia)
+sketchybar --add item space.M left \
+    --set space.M \
+        label="M" \
+        background.drawing=off \
+        drawing=off \
+        click_script="aerospace workspace M" \
+        script="$PLUGIN_DIR/aerospace.sh"
+
+# Add workspace I divisor
+sketchybar --add item workspace_I_divisor left \
+    --set workspace_I_divisor \
+        label="│" \
+        label.color=0xff6c7086 \
+        background.drawing=off \
+        drawing=on
+
+for i in {1..6}; do
+    sketchybar --add item space.$i left \
+        --set space.$i \
+            label="$i" \
+            background.drawing=off \
+            click_script="aerospace workspace $i" \
+            script="$PLUGIN_DIR/aerospace.sh"
+done
+
+# Add workspace divisor (hidden by default)
+sketchybar --add item workspace_divisor left \
+    --set workspace_divisor \
+        label="│" \
+        label.color=0xff6c7086 \
+        background.drawing=off \
+        drawing=off
+
+# Add remaining workspaces after divisor
+for i in {7..9}; do
+    sketchybar --add item space.$i left \
+        --set space.$i \
+            label="$i" \
+            background.drawing=off \
+            click_script="aerospace workspace $i" \
+            script="$PLUGIN_DIR/aerospace.sh"
+done
+
+# Create bracket around all workspace items including divisors
+sketchybar --add bracket workspaces space.I space.M workspace_I_divisor space.1 space.2 space.3 space.4 space.5 space.6 workspace_divisor space.7 space.8 space.9 \
+    --set workspaces \
+        background.color=0xff414559 \
+        background.corner_radius=15 \
+        background.height=30
+
+# Subscribe all workspace items to aerospace events
+sketchybar --add event aerospace_workspace_change \
+    --subscribe space.I aerospace_workspace_change \
+    --subscribe space.M aerospace_workspace_change \
+    --subscribe space.1 aerospace_workspace_change \
+    --subscribe space.2 aerospace_workspace_change \
+    --subscribe space.3 aerospace_workspace_change \
+    --subscribe space.4 aerospace_workspace_change \
+    --subscribe space.5 aerospace_workspace_change \
+    --subscribe space.6 aerospace_workspace_change \
+    --subscribe space.7 aerospace_workspace_change \
+    --subscribe space.8 aerospace_workspace_change \
+    --subscribe space.9 aerospace_workspace_change \
+    --subscribe workspace_divisor aerospace_workspace_change
+
+# Front app - next to workspaces
+sketchybar --add item front_app left \
+    --set front_app \
+        script="$PLUGIN_DIR/front_app.sh" \
+        icon= \
+    --subscribe front_app front_app_switched
+
+# Right side - Clock and Battery
+sketchybar --add item clock right \
+    --set clock \
+        update_freq=1 \
+        script="$PLUGIN_DIR/clock.sh" \
+        background.drawing=off
+
+# Create bracket around clock (similar to workspaces bracket)
+sketchybar --add bracket clock_bracket clock \
+    --set clock_bracket \
+        background.color=0xff414559 \
+        background.corner_radius=15 \
+        background.height=30
+
+# Add spacer between battery and clock
+sketchybar --add item spacer_right right \
+    --set spacer_right \
+        width=10 \
+        background.drawing=off
+
+sketchybar --add item battery right \
+    --set battery \
+        update_freq=120 \
+        script="$PLUGIN_DIR/battery.sh" \
+        background.drawing=off
+
+# Create bracket around battery
+sketchybar --add bracket battery_bracket battery \
+    --set battery_bracket \
+        background.color=0xff414559 \
+        background.corner_radius=15 \
+        background.height=30
+
+# Start everything
+sketchybar --update
