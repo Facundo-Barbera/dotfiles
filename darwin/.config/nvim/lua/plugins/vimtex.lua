@@ -4,13 +4,7 @@ return {
   ft = { "tex" },
   config = function()
     -- Set PDF viewer based on OS
-{{- if eq .chezmoi.os "darwin" }}
     vim.g.vimtex_view_method = "skim"
-{{- else if eq .chezmoi.os "linux" }}
-    vim.g.vimtex_view_method = "zathura"
-{{- else if eq .chezmoi.os "windows" }}
-    vim.g.vimtex_view_method = "general"
-{{- end }}
 
     -- Compiler settings - use latexmk with output directory
     vim.g.vimtex_compiler_latexmk = {

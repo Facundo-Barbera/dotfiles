@@ -1,8 +1,0 @@
-{{ if ne .chezmoi.os "darwin" }}
-.config/aerospace
-.config/sketchybar
-{{ end }}
-
-{{ if eq .chezmoi.os "windows" }}
-.config/ghostty
-{{ end }}

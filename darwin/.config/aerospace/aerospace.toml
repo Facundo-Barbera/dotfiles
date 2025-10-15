@@ -188,3 +188,14 @@ automatically-unhide-macos-hidden-apps = false
     down = 'volume down'
     up = 'volume up'
     shift-down = ['volume set 0', 'mode main']
+
+# Application-specific rules
+[[on-window-detected]]
+if.app-id = 'com.riotgames.RiotGames.RiotClient'
+run = 'layout floating'
+check-further-callbacks = true
+
+[[on-window-detected]]
+if.app-id = 'com.riotgames.LeagueofLegends.LeagueClientUx'
+run = 'layout floating'
+check-further-callbacks = true

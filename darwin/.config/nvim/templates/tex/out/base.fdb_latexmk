@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1759266739.61176 "base.tex" "out/base.pdf" "base" 1759266739.67696 1
+["pdflatex"] 1759853489.51608 "base.tex" "out/base.pdf" "base" 1759853489.60059 1
   "/Users/facundobautistabarbera/Library/TinyTeX/texmf-dist/tex/latex/base/article.cls" 1748806692 20144 b966087dda3b194755eb460d32e2ef75 ""
   "/Users/facundobautistabarbera/Library/TinyTeX/texmf-dist/tex/latex/base/size10.clo" 1748806692 8448 686612a86f0e04f41ea577f5ec7e83d8 ""
   "/Users/facundobautistabarbera/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def" 1751059413 30351 a2b09edc6c93a742566b222c33d0278e ""
@@ -7,7 +7,7 @@
   "/Users/facundobautistabarbera/Library/TinyTeX/texmf-var/web2c/pdftex/pdflatex.fmt" 1758085315 2266419 1c67f9cdc065bf068a0b8ac50f8d1798 ""
   "/Users/facundobautistabarbera/Library/TinyTeX/texmf.cnf" 1756781882.78333 701 22b24dc332177b20efa28d1d166c5bff ""
   "base.tex" 1759266698.50634 202 90ef361b5f02479382e94f6e689fb090 ""
-  "out/base.aux" 1759266739.6642 8 a94a2480d3289e625eea47cd1b285758 "pdflatex"
+  "out/base.aux" 1759853489.58911 8 a94a2480d3289e625eea47cd1b285758 "pdflatex"
   (generated)
   "out/base.aux"
   "out/base.log"
